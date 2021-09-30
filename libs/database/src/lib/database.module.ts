@@ -38,6 +38,7 @@ import { HashtagSchema } from './schemas/hashtag.schema';
 import { LanguageSchema } from './schemas/language.schema';
 import { NotificationSchema } from './schemas/notification.schema';
 import { OtpSchema } from './schemas/otp.schema';
+import { FeatureSchema } from './schemas/feature.schema';
 import { RelationshipSchemaFactory } from './schemas/relationship.schema';
 import { RevisionchemaFactory } from './schemas/revision.schema';
 import { UserSchemaFactory } from './schemas/user.schema';
@@ -51,6 +52,7 @@ import { RankerService } from './services/ranker.service';
 import { SearchService } from './services/search.service';
 import { UserService } from './services/user.service';
 import { UxEngagementService } from './services/uxengagement.service';
+import { FeatureService } from './services/feature.service';
 
 export const MongooseForFeatures = MongooseModule.forFeature([
   { name: 'AccountActivation', schema: AccountActivationSchema },
@@ -58,7 +60,8 @@ export const MongooseForFeatures = MongooseModule.forFeature([
   { name: 'UxEngagement', schema: UxEngagementSchema },
   { name: 'Notification', schema: NotificationSchema },
   { name: 'Language', schema: LanguageSchema },
-  { name: 'Hashtag', schema: HashtagSchema }
+  { name: 'Hashtag', schema: HashtagSchema },
+  { name: 'Feature', schema: FeatureSchema }
 ]);
 
 export const MongooseAsyncFeatures = MongooseModule.forFeatureAsync([
@@ -120,7 +123,8 @@ export const MongooseAsyncFeatures = MongooseModule.forFeatureAsync([
     NotificationProducer,
     LanguageService,
     HashtagService,
-    SearchService
+    SearchService,
+    FeatureService
   ],
   exports: [
     AuthenticationService,
@@ -131,7 +135,8 @@ export const MongooseAsyncFeatures = MongooseModule.forFeatureAsync([
     RankerService,
     LanguageService,
     HashtagService,
-    SearchService
+    SearchService,
+    FeatureService
   ]
 })
 export class DatabaseModule {}
@@ -145,5 +150,6 @@ export {
   RankerService,
   LanguageService,
   HashtagService,
-  SearchService
+  SearchService,
+  FeatureService
 };

@@ -37,6 +37,7 @@ import {
   SaveContentDto,
   ShortPayload
 } from './content.dto';
+import { FeaturePayloadDto, FeatureResponse } from './feature.dto';
 import {
   DEFAULT_FEED_QUERY_OPTIONS,
   FeedItemMode,
@@ -111,6 +112,8 @@ export {
   DEFAULT_NOTIFICATION_QUERY_OPTIONS,
   UserAccessTokenPayload,
   DEFAULT_FEED_QUERY_OPTIONS,
+  FeatureResponse,
+  FeaturePayloadDto,
   FeedsResponse,
   FeedItemMode,
   EntityVisibility,

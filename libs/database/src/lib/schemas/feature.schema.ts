@@ -46,9 +46,10 @@
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { FeaturePayloadDto } from '../dtos';
 import { CastcleBase } from './base.schema';
 
-export type FeatureDocument = Feature & Document;
+export type FeatureDocument = Feature & IFeature;
 
 @Schema({ timestamps: true })
 export class Feature extends CastcleBase {
@@ -59,4 +60,17 @@ export class Feature extends CastcleBase {
   name: string;
 }
 
+interface IFeature extends Document {
+  toFeaturePayload(): FeaturePayloadDto;
+}
+
 export const FeatureSchema = SchemaFactory.createForClass(Feature);
+
+FeatureSchema.methods.toFeaturePayload = function () {
+  return {
+    id: (this as FeatureDocument)._id,
+    slug: (this as FeatureDocument).slug,
+    name: (this as FeatureDocument).name,
+    key: 'feature.castcle'
+  } as FeaturePayloadDto;
+};
